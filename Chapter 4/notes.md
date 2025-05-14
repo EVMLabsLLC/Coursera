@@ -3,45 +3,102 @@
 This chapter covers fundamental concepts in Python programming, focusing on functions and error handling.
 
 ## Exercise 4.1: Functions and Return Values
-File: `4_1.py`
+**File:** `4_1.py`
 
 This exercise demonstrates several key concepts:
-- Function definition and parameters
-- Return values
-- String operations with `max()` and `min()`
-- User input handling
-- Conditional logic in functions
 
-The file contains examples of:
-1. String manipulation using `max()` and `min()` functions
-2. A greeting function that returns different messages based on language input
-3. A function demonstrating return value behavior (note: the `addtwo` function has a bug where it returns `a` instead of `added`)
+```python
+# String manipulation using max() and min()
+text = 'Hello World'
+print(max(text))  # Returns 'r'
+print(min(text))  # Returns ' ' (space)
 
-## Exercise 4.6: Pay Calculator with Error Handling
-File: `4_6.py`
+# Greeting function with language parameter
+def greet(lang):
+    if lang == 'es':
+        return 'Hola'
+    elif lang == 'fr':
+        return 'Bonjour'
+    else:
+        return 'Hello'
 
-This exercise implements a pay calculator with two versions:
-1. Basic version without error handling
-2. Enhanced version with error handling
+# Function with return value
+def addtwo(a, b):
+    added = a + b
+    return a  # Note: This is a bug, should return 'added'
+```
 
 Key concepts demonstrated:
-- Function implementation for business logic
-- Overtime calculations (time and a half for hours over 40)
-- Type conversion (string to float)
-- Error handling using try-except blocks
-- User input validation
+1. Function definition and parameters
+2. Return values
+3. String operations with `max()` and `min()`
+4. User input handling
+5. Conditional logic in functions
 
-The program:
-- Takes hours worked and hourly rate as input
-- Calculates regular pay for hours up to 40
-- Applies overtime rate (1.5x) for hours beyond 40
-- Includes error handling for non-numeric input
+## Exercise 4.6: Pay Calculator with Error Handling
+**File:** `4_6.py`
+
+This exercise implements a pay calculator with two versions:
+
+```python
+def computepay(hours, rate):
+    # Calculate regular pay
+    if hours <= 40:
+        pay = hours * rate
+    else:
+        # Calculate overtime
+        regular_pay = 40 * rate
+        overtime_pay = (hours - 40) * (rate * 1.5)
+        pay = regular_pay + overtime_pay
+    return pay
+
+# Get input from user
+try:
+    hours = float(input('Enter Hours: '))
+    rate = float(input('Enter Rate: '))
+    pay = computepay(hours, rate)
+    print('Pay:', pay)
+except:
+    print('Error, please enter numeric input')
+```
+
+Key concepts demonstrated:
+1. Function implementation for business logic
+2. Overtime calculations (time and a half for hours over 40)
+3. Type conversion (string to float)
+4. Error handling using try-except blocks
+5. User input validation
 
 ## Learning Outcomes
-- Understanding function definition and usage
-- Working with return values
-- Implementing conditional logic
-- Handling user input
-- Basic error handling with try-except blocks
-- Type conversion and validation
-- Business logic implementation 
+
+### 1. Function Definition and Usage
+```python
+def function_name(parameters):
+    # Function body
+    return value
+```
+
+### 2. Return Values
+```python
+def calculate_square(x):
+    return x * x
+```
+
+### 3. Error Handling
+```python
+try:
+    # Code that might raise an error
+    result = perform_operation()
+except:
+    # Handle the error
+    print('An error occurred')
+```
+
+### 4. Type Conversion
+```python
+# String to float
+value = float(input('Enter a number: '))
+
+# Float to string
+text = str(3.14)
+``` 
